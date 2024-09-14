@@ -1,5 +1,5 @@
 export function Features() {
-  const Features = [
+  const features = [
     {
       heading: 'Competitive Coding Contests',
       description:
@@ -33,30 +33,25 @@ export function Features() {
   ];
 
   return (
-    <section className="bg-white dark:bg-[#020817] py-6 md:py-10 ">
-      <div className="flex flex-col items-center m-auto text-center gap-4 max-w-[1024px]">
+    <section className="bg-white dark:bg-[#020817] py-6 md:py-10">
+      <div className="flex flex-col items-center text-center gap-4 max-w-[1024px] mx-auto">
         <div className="text-5xl font-bold">
           Platform <span className="text-[#4E7AFF]">Features</span>
         </div>
-        <div className="text-sm text-gray-500 w-2/3">
-          Unlock the Full Potential of Competitive Programming with These Key
-          Features
+        <div className="text-sm text-gray-500 w-full md:w-2/3 mx-auto">
+          Unlock the Full Potential of Competitive Programming with These Key Features
         </div>
-        <div className="grid gap-2 grid-cols-1 md:grid-cols-2 p-2 ">
-          {Features.map((lang: any, index: number) => (
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 p-2">
+          {features.map((feature, index) => (
             <div
-              className={`border-[1px] rounded-md p-2 text-start gap-2 flex flex-col w-[80%] ${
-                index % 2 === 0 ? 'mr-0' : 'ml-0'
-              }`}
+              className="border-[1px] rounded-md p-4 text-start flex flex-col"
               key={index}
             >
-              <div className="flex gap-2 items-center">
-                <div>
-                  <img src="/LinkArrowFeature.svg" alt="back" />
-                </div>
-                <div className="font-bold">{lang.heading}</div>
+              <div className="flex gap-2 items-center mb-2">
+                <img src="/LinkArrowFeature.svg" alt="arrow" className="w-6 h-6" />
+                <div className="font-bold">{feature.heading}</div>
               </div>
-              <div className="text-gray-500">{lang.description}</div>
+              <div className="text-gray-500">{feature.description}</div>
             </div>
           ))}
         </div>

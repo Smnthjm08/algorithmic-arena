@@ -4,20 +4,26 @@ import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { signIn } from "next-auth/react";
 import { Button } from "@repo/ui/button";
-import { CodeIcon } from "./Icon";
 import { ModeToggle } from "./ModeToggle";
+import Image from "next/image";
+
 export function Appbar() {
   const { data: session, status: sessionStatus } = useSession();
   const isLoading = sessionStatus === "loading";
 
   return (
-    <header className="bg-gray-900 text-white px-4 md:px-6 py-3 flex items-center justify-between">
-      <Link href="/" className="flex items-center gap-2" prefetch={false}>
-        <CodeIcon className="h-6 w-6" />
-        <span className="text-lg font-bold">Code100x</span>
-      </Link>
+    <header className="bg-background border-b px-4 md:px-6 py-3 flex items-center border-gray-800 text-white justify-between">
+
+    <Link href="/" className="flex items-center gap-2" prefetch={false}>
+      <Image src="/logo.svg" alt="logo" width={40} height={40} />
+      <div className="flex flex-col justify-center">
+        <div className="text-lg font-bold">algorithmic</div>
+        <div className="text-blue-500 font-medium">arena</div>
+      </div>
+    </Link>
+
       <nav className="hidden md:flex items-center gap-6">
-        <Link href="/contests" className="hover:underline" prefetch={false}>
+        {/* <Link href="/contests" className="hover:underline" prefetch={false}>
           Contests
         </Link>
         <Link href="/problems" className="hover:underline" prefetch={false}>
@@ -25,19 +31,27 @@ export function Appbar() {
         </Link>
         <Link href="/standings" className="hover:underline" prefetch={false}>
           Standings
-        </Link>
+        </Link> */}
       </nav>
       {!isLoading && session?.user && (
         <div className="flex items-center gap-4">
-          <ModeToggle />
-          <Button onClick={() => signOut()}>Logout</Button>
+        <div className="gap-4 w-[273px] space-x-4">
+          <Link onClick={() => signOut()} href="/" className="font-medium text-blueGray-500">Problems</Link>
+          <Link onClick={() => signOut()} href="/" className="font-medium text-blueGray-500">Contests</Link>
+          <Link onClick={() => signOut()} href="/" className="font-medium text-blueGray-500">Leaderboard</Link>
+        </div>
+        {/* <div className="flex items-center gap-4"> */}
+          <ModeToggle/>
+              <Image className="hidden md:flex" src="/Avatar.png" alt="avatar" width="40" height="40" />
+
         </div>
       )}
 
       {!isLoading && !session?.user && (
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 ">
         <ModeToggle />
-        <Button onClick={() => signIn()}>Sign in</Button>
+        <Button variant="secondary" onClick={() => signIn()} className=" text-white">Login </Button>
+        <Button variant="secondary"  onClick={() => signIn()} className="bg-blue-600 text-white">Sign Up Now</Button>
         </div>
       
       )}
