@@ -10,11 +10,12 @@ import {
   CardHeader,
   CardTitle
 } from "@repo/ui/card";
-import { Input } from "../../../../packages/ui/src/@/components/ui/input";
-import { Label } from "@repo/ui/label";
+import { Input } from "@repo/ui/input";
+
 import { User, Mail, Lock, GithubIcon, Eye, EyeOff, CircleUser } from 'lucide-react';
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
 
 export const description = 
   "A sign-up form for Algorithmic Arena with username, name, email, and password fields.";
@@ -22,6 +23,7 @@ export const description =
 export default function SignUp() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
+  const router = useRouter(); // Initialize the router
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -32,6 +34,8 @@ export default function SignUp() {
     // Simulate a sign-up process with a timeout
     setTimeout(() => {
       setLoading(false);
+      router.push('/verify-otp'); // Redirect to /verify-otp page
+
       // Add your sign-up logic here
     }, 2000);
   };
