@@ -41,7 +41,7 @@ export const Footer = () => {
               className="flex items-center justify-center w-10 h-10 bg-[#1E293B] text-white border border-[#1E293B] rounded-full hover:bg-gray-700 transition-colors"
               aria-label="YouTube"
             >
-              <SiYoutube className="w-6 h-6" />
+              <SiYoutube className="w-5 h-5" />
             </Link>
             <Link
               href={"https://www.instagram.com/kirat_ins/"}
@@ -50,7 +50,7 @@ export const Footer = () => {
               className="flex items-center justify-center w-10 h-10 bg-[#1E293B] text-white border border-[#1E293B] rounded-full hover:bg-gray-700 transition-colors"
               aria-label="Instagram"
             >
-              <SiX className="w-6 h-6" />
+              <SiX className="w-5 h-5" />
             </Link>
             <Link
               href={"https://www.youtube.com/@harkirat1"}
@@ -59,7 +59,7 @@ export const Footer = () => {
               className="flex items-center justify-center w-10 h-10 bg-[#1E293B] text-white border border-[#1E293B] rounded-full hover:bg-gray-700 transition-colors"
               aria-label="Instagram"
             >
-              <SiInstagram className="w-6 h-6" />
+              <SiInstagram className="w-5 h-5" />
             </Link>
           </div>
          
