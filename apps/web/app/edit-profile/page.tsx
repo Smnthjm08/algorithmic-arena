@@ -1,86 +1,63 @@
-"use client"
-
-import React from 'react';
+import React from 'react'
 import { Card, CardContent } from '@repo/ui/card';
-import { useRouter } from 'next/navigation'; // Updated import
 import { Input } from '@repo/ui/input';
 import { Button } from '@repo/ui/button';
-import { ArrowLeft, User, CircleUser } from 'lucide-react';
-import router from 'next/router';
+import { ArrowLeft, User, AtSign } from 'lucide-react';
 
-const EditProfile = () => {
-    const router = useRouter(); 
+type Props = {}
 
-
-    const handleBackClick = () => {
-        router.push('/profile'); 
-    };
-
+const EditProfile = (props: Props) => {
   return (
-    <Card className="w-full h-[792px] max-w-[1216px] mx-auto">
-      <CardContent className="p-8">
-        {/* Back to Profile */}
-        <div className="mb-8">
-          <Button variant="link" className="text-sm text-gray-400 flex items-center"  onClick={handleBackClick}>
-            <ArrowLeft className="w-4 h-4 mr-2" />Back to Profile
-          </Button>
-        </div>
+    <main>
+        <ProfileComponent />
+    </main>
+  )
+}
+
+const ProfileComponent = () => {
+  return (
+    <main className="w-[1440px] h-[1138px] pl-28 pt-8 pr-28 flex gap-[24px]">
+      <div className="flex items-center mb-6">
+        <ArrowLeft className="w-5 h-5 mr-2" />
+        <span className="text-sm text-gray-500">Back to Profile</span>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card className="col-span-1">
+          <CardContent className="p-0">
+            <div className="relative">
+              <img
+                src="/profile.svg"
+                alt="Profile"
+                className="w-full h-auto rounded-t-lg"
+              />
+              <Button variant="secondary" className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-3/4">
+                Upload Image
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
         
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Profile Picture Section */}
-          <div className="w-full md:w-1/3">
-          <div className='font-bold h-8 w-72'>Profile Picture</div>
-            <img
-              src="/profile.svg"
-              alt="Profile"
-              className="w-full aspect-square object-cover mb-2"
-            />
-            <Button variant="secondary" className="w-full bg-gray-800 text-white hover:bg-gray-700">
-              Upload Image
-            </Button>
-          </div>
+        <div className="col-span-2 space-y-4">
+          <Card>
+            <CardContent className="flex items-center p-4">
+              <User className="w-5 h-5 mr-2" />
+              <Input placeholder="riturajreal" className="flex-grow" />
+            </CardContent>
+          </Card>
           
-          {/* Profile Form Section */}
-          <div className="w-full md:w-2/3 space-y-4">
-          <div className='font-bold h-8 w-72'>Personal Info</div>
-            <div className="space-y-2">
-                <div>Username</div>
-              <label htmlFor="username" className="sr-only">Username</label>
-              <div className="relative">
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <Input
-                  id="username"
-                  type="text"
-                  placeholder="Username"
-                //   defaultValue="riturajreal"
-                  className="pl-10 bg-gray-800 border-gray-700 text-white w-full"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-            <div>Name</div>
-              <label htmlFor="name" className="sr-only">Name</label>
-              <div className="relative">
-                <CircleUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <Input
-                  id="name"
-                  type="text"
-                  placeholder="Name"
-                //   defaultValue="Anup Singh"
-                  className="pl-10 bg-gray-800 border-gray-700 text-white w-full"
-                />
-              </div>
-            </div>
-
-            <Button className="w-32 h-10 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white">
-              Update Profile
-            </Button>
-          </div>
+          <Card>
+            <CardContent className="flex items-center p-4">
+              <AtSign className="w-5 h-5 mr-2" />
+              <Input placeholder="Anup Singh" className="flex-grow" />
+            </CardContent>
+          </Card>
+          
+          <Button className="w-full">Update Profile</Button>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };
 
-export default EditProfile;
+export default EditProfile
