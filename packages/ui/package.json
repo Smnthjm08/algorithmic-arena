@@ -10,7 +10,11 @@
     "./select": "./src/@/components/ui/select.tsx",
     "./label": "./src/@/components/ui/label.tsx",
     "./textarea": "./src/@/components/ui/textarea.tsx",
-    "./tabs": "./src/@/components/ui/tabs.tsx"
+    "./tabs": "./src/@/components/ui/tabs.tsx",
+    "./input": "./src/@/components/ui/input.tsx",
+    "./input-otp": "./src/@/components/ui/input-otp.tsx",
+    "./chart": "./src/@/components/ui/chart.tsx",
+    "./pagination": "./src/@/components/ui/pagination.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

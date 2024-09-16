@@ -26,7 +26,7 @@ services:
     restart: always
     env_file: judge0.conf
     ports:
-      - '5432:5432'
+      - '5433:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -35,14 +35,14 @@ services:
       timeout: 5s
       retries: 5
     logging:
-      driver: none
+      driver: json-file
 
   server:
     image: judge0/judge0:1.13.1
     volumes:
       - ./judge0.conf:/judge0.conf:ro
       - type: bind
-        source: "##YOUR_LOCAL_PATH_TO_PROBLEMS_DIR## [repo]/apps/problems"
+        source: "/Users/smnthjm08/Desktop/algorithmic-arena/apps/problems"
         target: /dev/problems
     ports:
       - "2358:2358"
@@ -57,7 +57,7 @@ services:
     volumes:
       - ./judge0.conf:/judge0.conf:ro
       - type: bind
-        source: "##YOUR_LOCAL_PATH_TO_PROBLEMS_DIR## [repo]/apps/problems"
+        source: "/Users/smnthjm08/Desktop/algorithmic-arena/apps/problems"
         target: /dev/problems
     privileged: true
     restart: always
